@@ -1,6 +1,6 @@
 package com.yebali.dev.place.feignclient.coodinate.kakao
 
-import com.yebali.dev.place.feignclient.location.kakao.model.KakaoSearchPlaceFeignResponseModel
+import com.yebali.dev.place.feignclient.coodinate.kakao.model.KaKaoTransformCoordinateFeignResponseModel
 import com.yebali.dev.place.util.CoordinateSystem
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.GetMapping
@@ -19,5 +19,5 @@ interface KaKaoTransformCoordinateFeign {
         @RequestParam y: Double,
         @RequestParam input_coord: String? = CoordinateSystem.WGS84.value,
         @RequestParam output_coord: String
-    ): KakaoSearchPlaceFeignResponseModel
+    ): KaKaoTransformCoordinateFeignResponseModel
 }
