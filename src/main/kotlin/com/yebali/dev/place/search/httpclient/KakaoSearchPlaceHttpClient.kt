@@ -1,8 +1,8 @@
 package com.yebali.dev.place.search.httpclient
 
 import com.yebali.dev.place.config.openapi.KakaoOpenAPIProperties
-import com.yebali.dev.place.feignclient.location.kakao.KakaoSearchPlaceFeign
-import com.yebali.dev.place.feignclient.location.kakao.model.KakaoSearchPlaceFeignResponseModel
+import com.yebali.dev.place.feignclient.place.kakao.KakaoSearchPlaceFeign
+import com.yebali.dev.place.feignclient.place.kakao.model.KakaoSearchPlaceFeignResponseModel
 import com.yebali.dev.place.search.service.SearchPlaceFetcher
 import com.yebali.dev.place.search.service.model.SearchPlaceModel
 import com.yebali.dev.place.search.service.model.SearchPlaceResultModel

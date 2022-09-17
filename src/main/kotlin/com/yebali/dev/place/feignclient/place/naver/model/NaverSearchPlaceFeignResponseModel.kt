@@ -1,4 +1,4 @@
-package com.yebali.dev.place.feignclient.location.naver.model
+package com.yebali.dev.place.feignclient.place.naver.model
 
 import com.fasterxml.jackson.annotation.JsonProperty
 

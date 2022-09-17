@@ -1,8 +1,8 @@
 package com.yebali.dev.place.search.httpclient
 
 import com.yebali.dev.place.config.openapi.NaverOpenAPIProperties
-import com.yebali.dev.place.feignclient.location.naver.NaverSearchPlaceFeign
-import com.yebali.dev.place.feignclient.location.naver.model.NaverSearchPlaceFeignResponseModel
+import com.yebali.dev.place.feignclient.place.naver.NaverSearchPlaceFeign
+import com.yebali.dev.place.feignclient.place.naver.model.NaverSearchPlaceFeignResponseModel
 import com.yebali.dev.place.search.service.SearchPlaceFetcher
 import com.yebali.dev.place.search.service.model.SearchPlaceModel
 import com.yebali.dev.place.search.service.model.SearchPlaceResultModel

@@ -1,4 +1,4 @@
-package com.yebali.dev.place.feignclient.location.kakao.model
+package com.yebali.dev.place.feignclient.place.kakao.model
 
 import com.fasterxml.jackson.annotation.JsonProperty
 

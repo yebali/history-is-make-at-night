@@ -1,6 +1,6 @@
-package com.yebali.dev.place.feignclient.location.naver
+package com.yebali.dev.place.feignclient.place.naver
 
-import com.yebali.dev.place.feignclient.location.naver.model.NaverSearchPlaceFeignResponseModel
+import com.yebali.dev.place.feignclient.place.naver.model.NaverSearchPlaceFeignResponseModel
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestHeader
