@@ -35,13 +35,6 @@ dependencies {
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 
-    /* Postgresql */
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    implementation("com.querydsl:querydsl-apt:$querydslVersion")
-    implementation("com.querydsl:querydsl-jpa:$querydslVersion")
-    kapt("com.querydsl:querydsl-apt:$querydslVersion:jpa")
-    runtimeOnly("org.postgresql:postgresql")
-
     /* Redis */
     implementation("org.springframework.data:spring-data-redis")
     implementation("io.lettuce:lettuce-core:6.1.8.RELEASE")
