@@ -1,0 +1,77 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    properties:
+      jdbc.batch_size: 1000
+      jdbc.batch_versioned_data: true
+      order_inserts: true
+      order_updates: true
+      hibernate:
+        format_sql: true
+        jdbc.time_zone: UTC
+        default_schema: public
+        query:
+          fail_on_pagination_over_collection_fetch: true
+    hibernate:
+      ddl-auto: ${DB_DDL_AUTO:validate}
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl
+    generate-ddl: false
+    show-sql: true
+    open-in-view: false
+    database-platform: org.hibernate.dialect.PostgreSQL10Dialect
+  datasource:
+    url: ${DB_CONNECTION:jdbc:postgresql://localhost:5432/location-search}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:testpassword}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      minimum-idle: 5
+      max-lifetime: 580000
+      maximum-pool-size: 10
+      idle-timeout: 10000
+      connection-timeout: 10000
+      validation-timeout: 10000
+  redis:
+    client-name: simple-redis
+    host: localhost
+    database: 0
+    port: 6379
+    password:
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
+
+open-api:
+  kakao:
+    rest-api-key: ${REST_API_KEY:KakaoAK d15462d4c14f493018e5b19707091ee1}
+    base-url: ${KAKAO_BASE_URL:https://dapi.kakao.com}
+    search-place-url: ${KAKAO_SEARCH_place_URL:/v2/local/search/keyword.json}
+    transform-coordinate-url: ${KAKAO_TRANSFORM_COORDINATE_URL:/v2/local/geo/transcoord}
+  naver:
+    x-naver-client-id: ${X_NAVER_CLIENT_ID:yfRLHKsG3I84d3_ZKJnO}
+    x-naver-client-secret: ${X_NAVER_CLINET_SECRET:jtjxz0Vsyi}
+    base-url: ${NAVER_BASE_URL:https://openapi.naver.com}
+    search-place-url: ${NAVER_SERACH_PLACE_URL:/v1/search/local.json}
+
+basic:
+  service-name: ${SERVICE_NAME:yebali_location_search}
+  health-check-path: ${HEALTH_CHECK_PATH:/test/alive}
+
+management:
+  endpoint:
+    loggers.enabled: true
+    info.enabled: true
+    health.enabled: true
+  endpoints:
+    enabled-by-default: false
+    web:
+      base-path: ""
+      exposure:
+        include: info, loggers, health
+      path-mapping:
+        info: /dominus/actuator/info
+        loggers: /dominus/actuator/loggers
+        health: ${HEALTH_CHECK_PATH:/test/alive}
