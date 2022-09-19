@@ -2,7 +2,7 @@ package com.yebali.dev.place.feignclient.coodinate.kakao.model
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-class KaKaoTransformCoordinateFeignResponseModel(
+data class KakaoTransformCoordinateFeignResponseModel(
     val meta: Meta,
     val documents: List<Document>
 ) {
