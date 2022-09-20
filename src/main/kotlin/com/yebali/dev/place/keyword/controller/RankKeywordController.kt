@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/place/keyword")
+@RequestMapping("/place/keywords")
 class RankKeywordController(
     private val keywordRankService: KeywordRankService,
 ) {
-    @GetMapping("/rank")
+    @GetMapping("/ranks")
     fun getKeywordRank(
         @ModelAttribute request: GetKeywordRankRequest,
     ) = GetKeywordRankResponse.from(
