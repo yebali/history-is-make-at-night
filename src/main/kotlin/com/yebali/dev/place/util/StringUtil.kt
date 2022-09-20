@@ -4,6 +4,6 @@ fun String.removeHtmlTags(): String {
     return this.replace("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>".toRegex(), "")
 }
 
-fun String.removeWhitespace(): String{
+fun String.removeWhitespace(): String {
     return this.replace(" ", "")
 }
