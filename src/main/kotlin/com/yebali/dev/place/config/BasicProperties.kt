@@ -7,5 +7,4 @@ import org.springframework.boot.context.properties.ConstructorBinding
 @ConfigurationProperties("basic")
 class BasicProperties(
     val serviceName: String,
-    val healthCheckPath: String,
 )

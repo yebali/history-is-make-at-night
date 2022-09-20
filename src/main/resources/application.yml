@@ -24,7 +24,6 @@ open-api:
 
 basic:
   service-name: ${SERVICE_NAME:yebali_search_place}
-  health-check-path: ${HEALTH_CHECK_PATH:/test/alive}
 
 management:
   endpoint:
@@ -38,6 +37,6 @@ management:
       exposure:
         include: info, loggers, health
       path-mapping:
-        info: /dominus/actuator/info
-        loggers: /dominus/actuator/loggers
-        health: ${HEALTH_CHECK_PATH:/test/alive}
+        info: /actuator/info
+        loggers: /actuator/loggers
+        health: /actuator/health
