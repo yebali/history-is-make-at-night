@@ -45,6 +45,9 @@ dependencies {
     /* Coroutine */
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
 
+    /* Proj4j */
+    implementation("org.locationtech.proj4j:proj4j:1.1.5")
+
     /* Test */
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.mockito", module = "mockito-core")
