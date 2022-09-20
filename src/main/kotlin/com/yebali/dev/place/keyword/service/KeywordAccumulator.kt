@@ -12,7 +12,6 @@ class KeywordAccumulator(
         runCatching {
             stringRedisTemplate.opsForZSet().incrementScore(REDIS_KEYWORD_ACCUMULATOR_KEY, keyword, 1.0)
         }.onFailure {
-            // Todo 에러 메세지
             logger.error(it.message)
         }
     }
