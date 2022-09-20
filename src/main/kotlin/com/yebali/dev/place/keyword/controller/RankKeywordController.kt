@@ -17,6 +17,6 @@ class RankKeywordController(
     fun getKeywordRank(
         @ModelAttribute request: GetKeywordRankRequest,
     ) = GetKeywordRankResponse.from(
-        keywordRankService.fetchMostViewedKeywords(request.toModel())
+        keywordRankService.getMostViewedKeywords(request.toModel())
     )
 }

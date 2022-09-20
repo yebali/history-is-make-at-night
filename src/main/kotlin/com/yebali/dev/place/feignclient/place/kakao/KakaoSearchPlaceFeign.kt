@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam
  * [카카오 장소 검색 API](https://developers.kakao.com/docs/latest/ko/local/dev-guide#search-by-keyword)
  * */
 @FeignClient(
-    name = "KakaoSearchLocationFeignClient",
+    name = "KakaoSearchPlaceFeignClient",
     url = "\${open-api.kakao.base-url}"
 )
 interface KakaoSearchPlaceFeign {

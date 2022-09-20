@@ -15,7 +15,7 @@ class KakaoSearchPlaceHttpClient(
     private val kakaoSearchPlaceFeign: KakaoSearchPlaceFeign,
     private val kakaoOpenAPIProperties: KakaoOpenAPIProperties
 ) : SearchPlaceFetcher {
-    override fun searchLocations(model: SearchPlaceModel): List<SearchPlaceResultModel> {
+    override fun searchPlaces(model: SearchPlaceModel): List<SearchPlaceResultModel> {
         return try {
             kakaoSearchPlaceFeign.searchPlace(
                 restAPIKey = kakaoOpenAPIProperties.restAPIKey,

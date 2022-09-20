@@ -1,5 +1,5 @@
 package com.yebali.dev.place.keyword.service.model
 
-class GetMostViewedModelKeywords(
+class GetMostViewedKeywordsModel(
     val size: Long,
 )

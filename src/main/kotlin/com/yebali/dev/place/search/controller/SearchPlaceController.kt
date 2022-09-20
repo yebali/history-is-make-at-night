@@ -17,14 +17,14 @@ class SearchPlaceController(
     private val keywordRankService: KeywordRankService,
 ) {
     @GetMapping
-    fun searchLocation(
+    fun searchPlace(
         @ModelAttribute request: SearchPlaceRequest
     ): SearchPlaceResponse {
-        val locations = searchPlaceService.searchLocation(request.toModel())
+        val places = searchPlaceService.searchPlace(request.toModel())
         keywordRankService.accumulateKeywordViews(
             model = AccumulateKeywordViewsModel(keyword = request.keyword)
         )
 
-        return SearchPlaceResponse.from(locations)
+        return SearchPlaceResponse.from(places)
     }
 }

@@ -16,37 +16,28 @@ class SearchPlaceService(
     private val kakaoPlaceSearchHttpClient: KakaoSearchPlaceHttpClient,
     private val naverPlaceSearchHttpClient: NaverSearchPlaceHttpClient,
 ) {
-    fun searchLocation(model: SearchPlaceModel): List<SearchPlaceResultModel> {
-        val (locationsFromKakao, locationsFromNaver) = runBlocking(Dispatchers.IO) {
-            val locationsFromKakao = async {
-                kakaoPlaceSearchHttpClient.searchLocations(model)
+    fun searchPlace(model: SearchPlaceModel): List<SearchPlaceResultModel> {
+        val (placesFromKakao, placesFromNaver) = runBlocking(Dispatchers.IO) {
+            val placesFromKakao = async {
+                kakaoPlaceSearchHttpClient.searchPlaces(model)
             }
 
-            val locationsFromNaver = async {
-                naverPlaceSearchHttpClient.searchLocations(model)
+            val placesFromNaver = async {
+                naverPlaceSearchHttpClient.searchPlaces(model)
             }
 
-            locationsFromKakao.await() to locationsFromNaver.await()
+            placesFromKakao.await() to placesFromNaver.await()
         }
 
-        println("================kakao================")
-        locationsFromKakao.forEach {
-            println(it)
-        }
-        println("================naver================")
-        locationsFromNaver.forEach {
-            println(it)
-        }
-
-        val duplicatedLocations = locationsFromKakao
+        val duplicatedPlaces = placesFromKakao
             .take(5)
-            .filter { it.isExistIn(locationsFromNaver) }
+            .filter { it.isExistIn(placesFromNaver) }
 
-        val searchedOnlyNaver = locationsFromNaver.filter { !it.isExistIn(duplicatedLocations) }
-        val searchedOnlyKakao = locationsFromKakao.filter { !it.isExistIn(duplicatedLocations) }
-            .take(model.size - (duplicatedLocations.size + searchedOnlyNaver.size))
+        val searchedOnlyNaver = placesFromNaver.filter { !it.isExistIn(duplicatedPlaces) }
+        val searchedOnlyKakao = placesFromKakao.filter { !it.isExistIn(duplicatedPlaces) }
+            .take(model.size - (duplicatedPlaces.size + searchedOnlyNaver.size))
 
-        return duplicatedLocations + searchedOnlyKakao + searchedOnlyNaver
+        return duplicatedPlaces + searchedOnlyKakao + searchedOnlyNaver
     }
 
     private fun SearchPlaceResultModel.isExistIn(others: List<SearchPlaceResultModel>): Boolean {

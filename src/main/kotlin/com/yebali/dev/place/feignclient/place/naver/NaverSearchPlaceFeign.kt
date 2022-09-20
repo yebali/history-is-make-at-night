@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam
  * [네이버 지역 검색 API](https://developers.naver.com/docs/serviceapi/search/local/local.md#%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0)
  * */
 @FeignClient(
-    name = "NaverSearchLocationFeignClient",
+    name = "NaverSearchPlaceFeignClient",
     url = "\${open-api.naver.base-url}"
 )
 interface NaverSearchPlaceFeign {

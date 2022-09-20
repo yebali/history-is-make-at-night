@@ -15,7 +15,7 @@ class NaverSearchPlaceHttpClient(
     private val naverSearchPlaceFeign: NaverSearchPlaceFeign,
     private val naverOpenAPIProperties: NaverOpenAPIProperties,
 ) : SearchPlaceFetcher {
-    override fun searchLocations(model: SearchPlaceModel): List<SearchPlaceResultModel> {
+    override fun searchPlaces(model: SearchPlaceModel): List<SearchPlaceResultModel> {
         return try {
             naverSearchPlaceFeign.searchPlace(
                 clientId = naverOpenAPIProperties.xNaverClientId,
