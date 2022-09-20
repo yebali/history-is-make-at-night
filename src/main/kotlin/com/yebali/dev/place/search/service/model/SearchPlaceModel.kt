@@ -1,5 +1,6 @@
 package com.yebali.dev.place.search.service.model
 
-class SearchPlaceModel(
+data class SearchPlaceModel(
     val keyword: String,
+    val size: Int,
 )

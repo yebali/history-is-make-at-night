@@ -5,4 +5,6 @@ data class SearchPlaceResultModel(
     val address: String,
     val roadAddress: String,
     val phoneNumber: String,
+    val x: Double,
+    val y: Double,
 )
