@@ -26,7 +26,6 @@ repositories {
 }
 
 dependencies {
-    val querydslVersion = "4.4.0"
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -53,6 +52,7 @@ dependencies {
         exclude(group = "org.mockito", module = "mockito-core")
         exclude(group = "org.mockito", module = "mockito-junit-jupiter")
     }
+    testImplementation("com.ninja-squad:springmockk:3.1.1")
     testImplementation("org.testcontainers:junit-jupiter")
     testRuntimeOnly("com.h2database:h2")
 }
