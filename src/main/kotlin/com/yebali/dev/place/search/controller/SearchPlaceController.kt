@@ -3,6 +3,7 @@ package com.yebali.dev.place.search.controller
 import com.yebali.dev.place.keyword.service.KeywordRankService
 import com.yebali.dev.place.keyword.service.model.AccumulateKeywordViewsModel
 import com.yebali.dev.place.search.controller.model.SearchPlaceRequest
+import com.yebali.dev.place.search.controller.model.SearchPlaceResponse
 import com.yebali.dev.place.search.service.SearchPlaceService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.ModelAttribute
@@ -18,10 +19,12 @@ class SearchPlaceController(
     @GetMapping
     fun searchLocation(
         @ModelAttribute request: SearchPlaceRequest
-    ) {
-        searchPlaceService.searchLocation(request.toModel())
+    ): SearchPlaceResponse {
+        val locations = searchPlaceService.searchLocation(request.toModel())
         keywordRankService.accumulateKeywordViews(
             model = AccumulateKeywordViewsModel(keyword = request.keyword)
         )
+
+        return SearchPlaceResponse.from(locations)
     }
 }

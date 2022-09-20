@@ -6,6 +6,7 @@ import com.yebali.dev.place.feignclient.place.kakao.model.KakaoSearchPlaceFeignR
 import com.yebali.dev.place.search.service.SearchPlaceFetcher
 import com.yebali.dev.place.search.service.model.SearchPlaceModel
 import com.yebali.dev.place.search.service.model.SearchPlaceResultModel
+import com.yebali.dev.place.util.CoordinateTransformer
 import com.yebali.dev.place.util.Logging
 import org.springframework.stereotype.Component
 
@@ -14,7 +15,7 @@ class KakaoSearchPlaceHttpClient(
     private val kakaoSearchPlaceFeign: KakaoSearchPlaceFeign,
     private val kakaoOpenAPIProperties: KakaoOpenAPIProperties
 ) : SearchPlaceFetcher {
-    override fun fetchLocations(model: SearchPlaceModel): List<SearchPlaceResultModel> {
+    override fun searchLocations(model: SearchPlaceModel): List<SearchPlaceResultModel> {
         return try {
             kakaoSearchPlaceFeign.searchPlace(
                 restAPIKey = kakaoOpenAPIProperties.restAPIKey,
@@ -27,12 +28,16 @@ class KakaoSearchPlaceHttpClient(
     }
 
     private fun KakaoSearchPlaceFeignResponseModel.toResultModel(): List<SearchPlaceResultModel> {
+        val coordinateTransformer = CoordinateTransformer()
         return this.documents.map {
+            val transformedCoordinate = coordinateTransformer.transformWGS84ToKATEC(x = it.x, y = it.y)
             SearchPlaceResultModel(
                 placeName = it.placeName,
                 address = it.addressName,
                 roadAddress = it.roadAddress,
                 phoneNumber = it.phone,
+                x = transformedCoordinate.x,
+                y = transformedCoordinate.y
             )
         }
     }

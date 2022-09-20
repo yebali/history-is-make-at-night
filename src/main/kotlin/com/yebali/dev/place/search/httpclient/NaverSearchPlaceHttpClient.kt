@@ -15,7 +15,7 @@ class NaverSearchPlaceHttpClient(
     private val naverSearchPlaceFeign: NaverSearchPlaceFeign,
     private val naverOpenAPIProperties: NaverOpenAPIProperties,
 ) : SearchPlaceFetcher {
-    override fun fetchLocations(model: SearchPlaceModel): List<SearchPlaceResultModel> {
+    override fun searchLocations(model: SearchPlaceModel): List<SearchPlaceResultModel> {
         return try {
             naverSearchPlaceFeign.searchPlace(
                 clientId = naverOpenAPIProperties.xNaverClientId,
@@ -35,6 +35,8 @@ class NaverSearchPlaceHttpClient(
                 address = it.address,
                 roadAddress = it.roadAddress,
                 phoneNumber = it.telephone,
+                x = it.mapX.toDouble(),
+                y = it.mapY.toDouble(),
             )
         }
     }
