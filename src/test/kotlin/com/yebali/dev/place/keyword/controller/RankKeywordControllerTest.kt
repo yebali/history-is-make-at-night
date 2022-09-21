@@ -30,7 +30,7 @@ internal class RankKeywordControllerTest(
             "치킨" to 12L,
         )
 
-        mockMvc.get("/place/keyword/rank")
+        mockMvc.get("/place/keywords/ranks")
             .andDo { print() }
             .andExpect {
                 status { isOk() }
