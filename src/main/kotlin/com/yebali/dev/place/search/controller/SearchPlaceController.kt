@@ -20,11 +20,15 @@ class SearchPlaceController(
     fun searchPlace(
         @ModelAttribute request: SearchPlaceRequest
     ): SearchPlaceResponse {
-        val places = searchPlaceService.searchPlace(request.toModel())
+        accumulateKeywordViews(request)
+        return SearchPlaceResponse.from(searchPlaceService.searchPlace(request.toModel()))
+    }
+
+    private fun accumulateKeywordViews(request: SearchPlaceRequest) {
         keywordRankService.accumulateKeywordViews(
             model = AccumulateKeywordViewsModel(keyword = request.keyword)
         )
-
-        return SearchPlaceResponse.from(places)
     }
+
+
 }
